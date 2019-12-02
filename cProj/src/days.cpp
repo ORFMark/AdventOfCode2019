@@ -50,26 +50,40 @@ void day2() {
 			143, 1, 2, 143, 147, 1, 147, 10, 0, 99, 2, 0, 14, 0 };
 	int testCase[12] = { 1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50 };
 	//printArray(stdout, program, 157, 4);
-
-	for (int i = 0; i < 157; i += 4) {
-		switch (program[i]) {
-		case 99:
-			i = 158;
-			break;
-		case 1:
-			program[program[i + 3]] = program[program[i + 1]]
-					+ program[program[i + 2]];
-			break;
-		case 2:
-			program[program[i + 3]] = program[program[i + 1]]
-					* program[program[i + 2]];
-			break;
-		default:
-			cout << "INVALID OPCODE";
-			i = 158;
-			break;
+	int test[157];
+	for (int j = 0; j < 99; j++) {
+		for(int k = 0; k < 99; k++) {
+			for (int i = 0; i < 157; i++) {
+				test[i] = program[i];
+			}
+			test[1] = j;
+			test[2] = k;
+			for (int i = 0; i < 157; i += 4) {
+				switch (test[i]) {
+				case 99:
+					i = 158;
+					break;
+				case 1:
+					test[test[i + 3]] = test[test[i + 1]]
+												+ test[test[i + 2]];
+					break;
+				case 2:
+					test[test[i + 3]] = test[test[i + 1]]
+												* test[test[i + 2]];
+					break;
+				default:
+					cout << "INVALID OPCODE";
+					i = 158;
+					break;
+				}
+			}
+			if(test[0] == 19690720) {
+				cout << test[1] << test[2] << endl;
+				return;
+			}
 		}
 	}
+
 	printArray(stdout, program, 157, 4);
 
 	/*
