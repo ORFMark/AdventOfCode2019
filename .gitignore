@@ -1,0 +1,6 @@
+cProj/.settings/language.settings.xml
+*.cproject
+*.project
+cProj/.settings/
+*.exe
+*.o
